@@ -1,0 +1,39 @@
+{
+  "name": "ex4-template",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node bin/www"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "connect-session-sequelize": "^7.1.2",
+    "cookie-parser": "~1.4.4",
+    "cookies": "^0.8.0",
+    "debug": "^4.3.3",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "http-errors": "^1.8.1",
+    "morgan": "^1.10.0",
+    "sequelize": "^6.12.5",
+    "sequelize-cli": "^6.3.0",
+    "session": "^0.1.0",
+    "sqlite3": "^5.0.2"
+  },
+  "description": "[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6609730&assignment_repo_type=AssignmentRepo)\r # ex4-nodejs\r A started template for your project",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Solange-s-Courses/ex4-nodejs-neviim-mohamad-ektelat-repo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Solange-s-Courses/ex4-nodejs-neviim-mohamad-ektelat-repo/issues"
+  },
+  "homepage": "https://github.com/Solange-s-Courses/ex4-nodejs-neviim-mohamad-ektelat-repo#readme",
+  "devDependencies": {
+    "bcrypt": "^5.0.1",
+    "express-session": "^1.17.2"
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS Includes-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+  <link rel="shortcut icon" href="#">
+
+  <title>Exercise 4</title>
+
+</head>
+<body>
+<div class="container">
+<form action="/register" method="post">
+  <div class="d-flex justify-content-center m-4" >
+    <h1>NASA API REGISTRATION</h1>
+  </div>
+  <%if(title4){%>
+  <div class="alert alert-danger m-5" role="alert" id="alert1"><%= title4 %></div>
+  <%}%>
+  <h5>Email:</h5>
+  <input class="form-control " id="Email" name="Email" placeholder="Enter your email"
+         pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Eight or more characters" required/><br>
+  <!--<div class="alert alert-danger m-5" role="alert" id='alert_box2'></div>-->
+  <h5>First Name:</h5>
+  <input class="form-control " id="FirstName" name="FirstName" placeholder="Enter your First Name"
+         pattern="^[A-Za-z]{1,20}" title="Eight or more characters" required/><br>
+  <h5>Last Name:</h5>
+  <input class="form-control " id="LastName" name="LastName" placeholder="Enter your Last Name"
+         pattern="^[A-Za-z]{1,20}" title="Eight or more characters" required/><br>
+  <button class="btn btn-primary mt-4"  id="submit">
+    Register
+  </button>
+</form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="/js/myfunctions.js"></script>
+    <script src="/js/ApiFunctions.js"></script>
+    <script src="/js/Validator.js"></script>
+    <script src="/js/alertBox.js"></script>
+    <link rel="stylesheet" href="/stylesheets/mycss.css">
+
+    <link rel="shortcut icon" href="#">
+
+    <title>Exercise 3 - Internet Programming Course template</title>
+</head>
+<!------------------------------------------------------HTML----------------------------------------------------------->
+<body>
+<div class="container-fluid" >
+    <img class="img-fluid rounded mx-auto d-block wallpaper" src="/images/mars2.jpg" alt="">
+    <div class="card" >
+        <div class="card-body">
+            <h5 class="text-center card-title"><b>MARS Images browser</b></h5>
+            <p class="text-center card-text">Browse NASA Mars Images and save your preferred ones</p>
+            <div class="d-flex justify-content-center">
+                <a href="#" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">Whom am I</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--Form-->
+<div class="container">
+    <!--Alert box-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Profile
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><h5 class="dropdown-item"><%= title1 %></h5></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" role="button" id="logout">LogOut</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!----------------------------------------------------------------------------------------------------------------->
+    <% if( title2 ){ %>
+        <div class="alert m-5" style="background-color: rgb(0,204,102)" role="alert" ><%= title2 %></div>
+    <%}%>
+    <div class="alert alert-danger m-5" role="alert" id='alert_box4'></div>
+    <div class="row">
+        <div class="col-12 col-s-12 col-lg-6 col-m-4 p-2">
+            <h1 class="p-2 layout">Search for Images:</h1>
+
+            <!--Alert box-->
+            <div class="alert alert-danger" role="alert" id='alert_box1'></div>
+            <h5>Date(YYYY-MM-DD) or Sol:</h5>
+            <input class="form-control " id="searchDate" placeholder="Enter search date or Sol" required/><br>
+
+            <!--Alert box-->
+            <div class="alert alert-danger" role="alert" id='alert_box2'></div>
+            <h5>Select Rover:</h5>
+            <div class="input-group mb-3" id="searchRover">
+                <label for="inputGroupSelect01"></label><select class="form-select" id="inputGroupSelect01">
+                    <option selected value="Choose">Choose a rover</option>
+                    <option value="Curiosity">Curiosity</option>
+                    <option value="Opportunity">Opportunity</option>
+                    <option value="Spirit">Spirit</option>
+                </select>
+            </div><br>
+
+            <!--Alert box-->
+            <div class="alert alert-danger" role="alert" id='alert_box3'></div>
+            <h5>Select Camera:</h5>
+            <div class="input-group mb-3" id="searchCamera">
+                <label for="inputGroupSelect01"></label><select class="form-select" id="inputGroupSelect02">
+                    <option selected value="Choose">Choose a camera</option>
+                    <option value="FHAZ">FHAZ</option>
+                    <option value="RHAZ">RHAZ</option>
+                    <option value="MAST">MAST</option>
+                    <option value="CHEMCAM">CHEMCAM</option>
+                    <option value="MAHLI">MAHLI</option>
+                    <option value="MARDI">MARDI</option>
+                    <option value="NAVCAM">NAVCAM</option>
+                    <option value="PANCAM">PANCAM</option>
+                    <option value="MINITES">MINITES</option>
+                </select>
+            </div>
+
+            <!--Search button-->
+            <button class="btn btn-primary mt-4"  id="search">
+                search
+            </button>
+
+            <!--Clear button-->
+            <button class="btn btn-primary mt-4"  id="clear">
+                clear
+            </button>
+        </div>
+        <div class="col-12 col-s-12 col-lg-6 col-m-4 p-2">
+            <h1 class="p-2 layout" >Saved Images:</h1>
+
+            <!--Start slide Show button-->
+            <button class="btn btn-primary mt-4"  id="start">
+                Start Slide Show
+            </button>
+
+            <!--Stop slide show button-->
+            <button class="btn btn-primary mt-4"  id="stop">
+                Stop Slide Show
+            </button>
+
+            <button class="btn btn-primary mt-4"  id="reset">
+                Reset
+            </button>
+            <ol id="ol" class="ol"></ol>
+        </div>
+    </div>
+    <div class="row">
+
+        <!--Loading spinner-->
+        <div class="d-flex justify-content-center" >
+            <div class="spinner-grow" id="spinner" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+
+        <!--Carousel-->
+        <div class="d-flex justify-content-center">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade w-75" data-bs-ride="carousel">
+                <h1 class="p-2 layout">Slide Show:</h1>
+                <div class="d-flex justify-content-center">
+                    <div class="carousel-inner m-4" id="carousel"></div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <h1 class="p-2 layout" >Search results:</h1>
+    </div>
+    <div class = "row" id="content">
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="errors-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Correct the following problems</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="error-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-------------------------------------------------------Modal--------------------------------------------------------->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Who is submitting:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Name: Mohamad Ektelat.</p>
+                <p>Id:208223826</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------------------------------------------------JS Code------------------------------------------------------------>
+
+<script>
+
+    ApiData.getList();
+
+    validator.loadManifestData()
+
+    useApiData.carouselDisplay("none");
+
+    alertBox.hide();
+
+    document.getElementById('search').addEventListener('click',useApiData.searchButton);
+
+    document.getElementById('clear').addEventListener('click',useApiData.clearButton);
+
+    document.getElementById("logout").addEventListener('click', useApiData.logout);
+
+    document.getElementById('start').addEventListener('click', (event) =>{
+        useApiData.carouselDisplay("block");
+    });
+
+    document.getElementById('stop').addEventListener('click', (event) =>{
+        useApiData.carouselDisplay("none");
+    });
+
+    document.getElementById('reset').addEventListener('click', ()=>{
+       ApiData.resetList();
+       ApiData.getList();
+    });
+
+
+
+</script>
+
+<!---------------------------------------------------Includes---------------------------------------------------------->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

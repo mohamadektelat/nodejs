@@ -1,0 +1,40 @@
+/* CSS if any */
+.card{
+    position: absolute;
+    width: max-content;
+    max-width: 85%;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wallpaper {
+    height: 370px;
+    object-fit: cover;
+}
+
+.delete{
+    position: relative;
+    bottom: 25px;
+    left: 100px;
+}
+.ol{
+    list-style: none;
+}
+
+.li{
+    background-color: ghostwhite;
+    padding-left: 5px;
+    margin: 20px;
+}
+
+.layout{
+    background-color: lightblue;
+}
+
+.spinner-grow{
+    width: 6rem;
+    height: 6rem;
+    color: midnightblue;
+    display: none;
+}
